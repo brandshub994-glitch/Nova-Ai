@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nova Ai builds AI-powered customer service agents, chatbots, lead generation systems, and business process automation for small businesses." />
+  <title>Nova Ai — AI Automation for Small Businesses</title>
+
+  <style>
+    :root {
+      --blue: #3b82f6;
+      --blue-dark: #2563eb;
+      --blue-soft: #eff6ff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --surface: #ffffff;
+      --background: #f8fafc;
+      --radius: 14px;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--surface);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 11px;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      color: var(--blue-dark);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin-bottom: 22px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 18%, rgba(59,130,246,.13), transparent 32%),
+        radial-gradient(circle at 10% 90%, rgba(59,130,246,.07), transparent 30%),
+        var(--surface);
+    }
+
+    .hero-content {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gradient-text {
+      color: var(--blue);
+    }
+
+    .hero .lead {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--blue);
+      box-shadow: 0 5px 16px rgba(59,130,246,.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: white;
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--background);
+      border-color: #cbd5e1;
+    }
+
+    .video-placeholder {
+      width: min(860px, 100%);
+      aspect-ratio: 16 / 9;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #0f172a;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(59,130,246,.16), transparent 45%);
+    }
+
+    .play {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      font-size: 24px;
+      padding-left: 4px;
+      z-index: 1;
+      box-shadow: 0 10px 30px rgba(59,130,246,.3);
+    }
+
+    .video-label {
+      position: absolute;
+      bottom: 18px;
+      left: 20px;
+      color: #cbd5e1;
+      font-size: 13px;
+      z-index: 1;
+    }
+
+    .problem {
+      background: var(--background);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 14px rgba(15,23,42,.03);
+    }
+
+    .number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 9px;
+      color: var(--blue-dark);
+      background: var(--blue-soft);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      letter-spacing: -.02em;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .solution {
+      background: white;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .benefit {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+    }
+
+    .check {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      color: white;
+      background: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .benefit h3 {
+      margin-bottom: 7px;
+      font-size: 16px;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .calendly-placeholder {
+      min-height: 290px;
+      display: grid;
+      place-items: center;
+      padding: 35px;
+      margin-bottom: 48px;
+      border: 1px dashed #93c5fd;
+      border-radius: 18px;
+      background: var(--blue-soft);
+      text-align: center;
+    }
+
+    .calendly-placeholder strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .calendly-placeholder span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      padding: 46px;
+      border-radius: 20px;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      max-width: 700px;
+      margin: 0 auto 14px;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto 26px;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 900px) {
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 80px 0 68px;
+      }
+
+      .actions {
+        margin-bottom: 38px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 32px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SECTION 1: HERO -->
+  <section class="section hero" id="home">
+    <div class="container hero-content">
+      <span class="eyebrow">AI Automation for Small Businesses</span>
+
+      <h1>
+        Turn missed inquiries into
+        <span class="gradient-text">customers — automatically.</span>
+      </h1>
+
+      <p class="lead">
+        Nova Ai builds AI-powered customer service agents, chatbots, lead-generation systems,
+        and business automations for small businesses, restaurants, and real estate professionals.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#calendly">Book a Free Call</a>
+        <a class="btn btn-secondary" href="#solution">Learn More</a>
+      </div>
+
+      <!-- Replace this placeholder with your YouTube embed -->
+      <div class="video-placeholder" aria-label="YouTube video placeholder">
+        <div class="play">▶</div>
+        <div class="video-label">YouTube video — replace this area with your video embed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: PROBLEM -->
+  <section class="section problem" id="problems">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">The Problem</span>
+        <h2>Your business shouldn't lose money to repetitive work.</h2>
+        <p>
+          You're focused on serving customers and growing your business. But everyday
+          communication and admin tasks can quietly consume hours — and cost you leads.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="number">01</div>
+          <h3>Leads go cold</h3>
+          <p>
+            Customers message when they're ready to buy. If nobody responds quickly,
+            they can move on to a competitor before you even see the inquiry.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">02</div>
+          <h3>Too much repetitive work</h3>
+          <p>
+            Answering the same questions, collecting customer details, following up,
+            booking appointments, and updating information drains valuable time.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">03</div>
+          <h3>Growth becomes harder</h3>
+          <p>
+            More customers often means more messages and admin. Without smarter systems,
+            your team works harder instead of having more capacity to grow.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SOLUTION -->
+  <section class="section solution" id="solution">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">The Nova Ai Solution</span>
+        <h2>Put your customer communication and operations on autopilot.</h2>
+        <p>
+          We design practical AI systems around your business — so customers get faster
+          answers, leads get followed up, and your team gets more time back.
+        </p>
+      </div>
+
+      <div class="benefits">
+        <article class="benefit">
+          <div class="check">✓</div>
+          <h3>24/7 AI Customer Service</h3>
+          <p>Answer common customer questions even when your team is offline.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="check">✓</div>
+          <h3>Lead Capture & Follow-Up</h3>
+          <p>Capture inquiries and automatically move promising leads toward a conversation.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="check">✓</div>
+          <h3>Custom Chatbots</h3>
+          <p>Build helpful AI assistants tailored to your services, customers, and workflows.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="check">✓</div>
+          <h3>Business Process Automation</h3>
+          <p>Connect repetitive tasks into smarter workflows that reduce manual work.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="check">✓</div>
+          <h3>Built Around Your Business</h3>
+          <p>Practical solutions designed for small businesses, restaurants, and real estate.</p>
+        </article>
+      </div>
+
+      <!-- Calendly inline widget -->
+      <div id="calendly">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/brandshub994"
+          style="min-width:320px;height:700px;"
+        ></div>
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
+      </div>
+
+      <div class="cta">
+        <h2>Ready to make your business work smarter?</h2>
+        <p>
+          Let's identify the repetitive tasks and missed opportunities AI can help you solve.
+        </p>
+        <a class="btn btn-primary" href="#calendly">Book Your Free Automation Call</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smoothly close focus after clicking navigation-style buttons.
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', () => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
